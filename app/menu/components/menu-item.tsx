@@ -1,6 +1,15 @@
+"use client"
 import Rating from "@/app/components/rating";
+import { useState } from "react";
 
 export default function MenuItem() {
+
+    const [currentTab, setCurrentTab] = useState<Number>(1);
+
+    function changeTab(tabNumber: Number) {
+        setCurrentTab(tabNumber);
+    }
+
     return <article className="w-[250px] border-2 m-2 border-gray-300 bg-white">
                 <div>
                     <img className="h-56 object-cover w-full"  
@@ -8,19 +17,35 @@ export default function MenuItem() {
                 </div>
 
                 <div id="meun-item-buttons" className="flex flex-row justify-between">
-                    <button className="b">Info</button>
-                    <button>Ingredients</button>
-                    <button>Add</button>
+                    <button onClick={() => {changeTab(1)}} className="hover:bg-gray-300 text-gray-600 font-bold py-2 px-4">Info</button>
+                    <button onClick={() => {changeTab(2)}} className="hover:bg-gray-300 text-gray-600 font-bold py-2 px-4">Ingredients</button>
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">Add</button>
                 </div>
 
                 <div className="p-5">
                     <h2 className="mb-2">Cream Cheese Sandwitch</h2>
-                    <div className="flex gap-2">
-                        <Rating></Rating>
-                        <span className="text-sm">200 Reviews</span>
-                    </div>
-                    <a href="#" className="text-sm font-bold">Chinese Chef</a>
-                    <p>The sandwitch is a ..</p>
+                    { currentTab == 1 &&   
+                        <>
+                             <div className="flex gap-2">
+                                <Rating></Rating>
+                                <span className="text-sm">200 Reviews</span>
+                            </div>
+                            <a href="#" className="text-sm font-bold">Chinese Chef</a>
+                            <p>The sandwitch is a ..</p>
+                        </>
+
+                    }
+                     
+                    { currentTab == 2 &&   
+                        <>
+                            <ul className="list-disc ml-5">
+                                <li>Bread</li>
+                                <li>Cheese</li>
+                                <li>Tomato</li>
+                            </ul>
+                        </>
+                    }
+                   
                 </div>
             </article>;
 }
