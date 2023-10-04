@@ -1,0 +1,16 @@
+datasource db {
+    provider = "mysql"
+    url = "mysql://admin:1234@localhost:3306/sandwitch"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model MenuItem {
+    id Int @id @default(autoincrement())
+    name String
+    description String
+    price Decimal
+    photoUrl String
+}

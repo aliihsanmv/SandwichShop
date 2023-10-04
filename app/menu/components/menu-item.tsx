@@ -1,10 +1,14 @@
 "use client"
 import Rating from "@/app/components/rating";
-import { useState } from "react";
+import { CartContext } from "@/app/contexts/cart";
+import { useContext, useState } from "react";
+import { IMenuItem } from "@/app/helpers/menu-repository";
 
-export default function MenuItem() {
+export default function MenuItem({name, description} : IMenuItem) {
 
     const [currentTab, setCurrentTab] = useState<Number>(1);
+
+    let { cart, setCart } = useContext(CartContext);
 
     function changeTab(tabNumber: Number) {
         setCurrentTab(tabNumber);
@@ -23,7 +27,7 @@ export default function MenuItem() {
                 </div>
 
                 <div className="p-5">
-                    <h2 className="mb-2">Cream Cheese Sandwitch</h2>
+                    <h2 className="mb-2">{name}</h2>
                     { currentTab == 1 &&   
                         <>
                              <div className="flex gap-2">
@@ -31,7 +35,7 @@ export default function MenuItem() {
                                 <span className="text-sm">200 Reviews</span>
                             </div>
                             <a href="#" className="text-sm font-bold">Chinese Chef</a>
-                            <p>The sandwitch is a ..</p>
+                            <p>{description}</p>
                         </>
 
                     }
@@ -46,6 +50,8 @@ export default function MenuItem() {
                         </>
                     }
                    
+                   <button className="hover:bg-blue-400 w-full hover:text-white p-2 mt-5" onClick={() => { if(setCart != null) { setCart(cart+1) } }}>Details</button>
+
                 </div>
             </article>;
 }
