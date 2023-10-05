@@ -3,8 +3,9 @@ import Rating from "@/app/components/rating";
 import { CartContext } from "@/app/contexts/cart";
 import { useContext, useState } from "react";
 import { IMenuItem } from "@/app/helpers/menu-repository";
+import { AddCartForm } from "./add-cart-form";
 
-export default function MenuItem({name, description} : IMenuItem) {
+export default function MenuItem({id, name, description} : IMenuItem) {
 
     const [currentTab, setCurrentTab] = useState<Number>(1);
 
@@ -23,7 +24,8 @@ export default function MenuItem({name, description} : IMenuItem) {
                 <div id="meun-item-buttons" className="flex flex-row justify-between">
                     <button onClick={() => {changeTab(1)}} className="hover:bg-gray-300 text-gray-600 font-bold py-2 px-4">Info</button>
                     <button onClick={() => {changeTab(2)}} className="hover:bg-gray-300 text-gray-600 font-bold py-2 px-4">Ingredients</button>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">Add</button>
+                    {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">Add</button> */}
+                    <AddCartForm itemId={id ?? 0} />
                 </div>
 
                 <div className="p-5">

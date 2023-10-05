@@ -1,8 +1,5 @@
-const fs = require('fs');
-import path from 'path';
 import { MenuItem, PrismaClient } from '@prisma/client';
 
-const jsonDirectory = path.join(process.cwd(), 'app/data');
 const prisma = new PrismaClient();
 
 
@@ -60,25 +57,10 @@ async function create(menuItem : IMenuItem)
 }
 
 function update(id: number, params: IMenuItem) {
-    // const menuItem = menuItems.find(x => x.id.toString() === id.toString());
 
-    // if(!menuItem) {
-    //     return;
-    // }
-
-    // // update and save
-    // Object.assign(menuItem, params);
-    // saveData();
 }
 
 
 function _delete(id: number) {
-    // filter out deleted user and save
-    // menuItems = menuItems.filter(x => x.id.toString() !== id.toString());
-    saveData();
-    
-}
 
-function saveData() {
-    // fs.writeFileSync(jsonDirectory + '/menuItems.json', JSON.stringify(menuItems, null, 4));
 }
