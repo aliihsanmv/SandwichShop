@@ -4,10 +4,16 @@ import MenuItem from "./components/menu-item";
 import { CartContext } from "../contexts/cart";
 import { MenuItemForm } from "./components/menu-item-form";
 import { IMenuItem, menuRepo } from "../helpers/menu-repository";
+import Pagination from "./components/pagination";
 
-export default async function MenuPage() {
+export default async function MenuPage({ searchParams }
+    : { searchParams: { [key: string]: string | string[] | undefined }}) {
 
-    const menuitems: IMenuItem[] = (await menuRepo.getAll()).map<IMenuItem>(x => {
+    const page = searchParams['page'] ?? '1';
+
+    const paginatedList = await menuRepo.getByPage(Number(page));
+
+    const menuitems: IMenuItem[] = paginatedList.items.map<IMenuItem>(x => {
         return {
             ...x,
             price: Number.parseFloat(x.price.toString())
@@ -20,13 +26,14 @@ export default async function MenuPage() {
 
             <p>{ menuitems.length }</p>
             <br />
-            <MenuItemForm />
+            {/* <MenuItemForm /> */}
             <br />
             <section className="flex flex-row justify-center min-w-full flex-wrap gap-5">
                 {
                     menuitems.map(m => (<MenuItem {...m}/>))
                 }
             </section>
+            <Pagination {...paginatedList} />
         </main>;
     
 }

@@ -1,9 +1,9 @@
 const fs = require('fs');
 import path from 'path';
-import { PrismaClient } from '@prisma/client';
+import { MenuItem, PrismaClient } from '@prisma/client';
 
 const jsonDirectory = path.join(process.cwd(), 'app/data');
-const primsa = new PrismaClient();
+const prisma = new PrismaClient();
 
 
 export interface IMenuItem {
@@ -14,11 +14,40 @@ export interface IMenuItem {
     photoUrl: string;
 }
 
+export interface IPaginatedList<T> {
+    page: number,
+    itemsPerPage: number,
+    totalItems: number,
+    totalPages: number
+    items: T[]
+}
+
+
 
 export const menuRepo = {
-    getAll: async () => await primsa.menuItem.findMany(),
+    getAll: async () => await prisma.menuItem.findMany(),
     // getById: (id : number) => menuItems.find(x => x.id?.toString() === id.toString()),
     // find: (x: any) => menuItems.find(x),
+    getByPage: async (page: number = 1, itemsPerPage : number = 5) => {
+        const items = await prisma.menuItem.findMany({
+            skip: (page - 1) * itemsPerPage,
+            take: itemsPerPage
+        });
+
+        const totalItems = await prisma.menuItem.count();
+        const totalPages = Math.floor(totalItems / itemsPerPage) + (totalItems % itemsPerPage > 0 ? 1 : 0)
+
+        var res : IPaginatedList<MenuItem> = {
+            page,
+            itemsPerPage,
+            totalItems,
+            totalPages,
+            items
+        }
+
+        return res;
+
+    },
     create,
     update,
     delete: _delete
@@ -27,7 +56,7 @@ export const menuRepo = {
 async function create(menuItem : IMenuItem) 
 {
     menuItem.id = undefined;
-    const res = await primsa.menuItem.create({data: menuItem});
+    const res = await prisma.menuItem.create({data: menuItem});
 }
 
 function update(id: number, params: IMenuItem) {
