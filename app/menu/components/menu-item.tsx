@@ -52,7 +52,7 @@ export default function MenuItem({id, name, description} : IMenuItem) {
                         </>
                     }
                    
-                   <button className="hover:bg-blue-400 w-full hover:text-white p-2 mt-5" onClick={() => { if(setCart != null) { setCart(cart+1) } }}>Details</button>
+                   <button className="hover:bg-blue-400 w-full hover:text-white p-2 mt-5">Details</button>
 
                 </div>
             </article>;
