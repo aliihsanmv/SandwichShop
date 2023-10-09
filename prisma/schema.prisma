@@ -14,6 +14,7 @@ model MenuItem {
     price Decimal
     photoUrl String
     cartItems CartItem[]
+    orderItems OrderItem[]
 }
 
 model Cart {
@@ -30,4 +31,23 @@ model CartItem {
   menuItemId Int
   quantity Int
   price Decimal
+}
+
+model Order {
+  id Int @id @default(autoincrement())
+  orderItems OrderItem[]
+  deliveryMode Int
+  deliveryAddress Json?
+  createdAt DateTime
+  updatedAt DateTime
+}
+
+model OrderItem {
+  id Int @id @default(autoincrement())
+  order Order @relation(fields: [orderId], references: [id])
+  orderId Int
+  menuItem MenuItem? @relation(fields: [menuItemId], references: [id])
+  menuItemId Int?
+  price Decimal
+  quantity Int
 }

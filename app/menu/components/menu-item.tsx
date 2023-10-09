@@ -1,6 +1,5 @@
 "use client"
 import Rating from "@/app/components/rating";
-import { CartContext } from "@/app/contexts/cart";
 import { useContext, useState } from "react";
 import { IMenuItem } from "@/app/helpers/menu-repository";
 import { AddCartForm } from "./add-cart-form";
@@ -9,7 +8,6 @@ export default function MenuItem({id, name, description} : IMenuItem) {
 
     const [currentTab, setCurrentTab] = useState<Number>(1);
 
-    let { cart, setCart } = useContext(CartContext);
 
     function changeTab(tabNumber: Number) {
         setCurrentTab(tabNumber);

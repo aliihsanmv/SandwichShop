@@ -1,4 +1,5 @@
 import { Cart, CartItem, PrismaClient } from "@prisma/client";
+import { OrderDto, OrderItemDto, orderRepo } from "./order-repository";
 
 const prisma = new PrismaClient({
     // log: ['query', 'info', 'warn', 'error'],
@@ -113,13 +114,29 @@ async function checkout(cartId: number)
 
     try {
 
+        let orderDto : OrderDto = {
+            items: [],
+            deliveryMode: 1,
+            deliveryAddress: undefined,
+        }
+
+        let orderItemDto: OrderItemDto[] = [];
 
         cart.cartItems.forEach(async x => {
+
+            orderItemDto.push({
+                menuItemId: x.menuItemId,
+                quantity: x.quantity,
+                price: Number(x.price)
+            });
+
             var res = await prisma.cartItem.delete({ where: { id: x.id }});
 
         })
 
-
+        orderDto.items = orderItemDto;
+        
+        var orderDtoRes = await orderRepo.create(orderDto);
         var res = await prisma.cart.update({where: {id: cartId}, data: { createdAt: new Date() }})
 
     } catch (ex) {
