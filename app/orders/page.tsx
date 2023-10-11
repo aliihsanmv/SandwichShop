@@ -9,10 +9,9 @@ export default async function MenuPage({ searchParams }
 
     const paginatedList = await orderRepo.getByPage(Number(page));
 
-    return <main className="flex min-h-screen flex-col items-center justify-top">
-            <h1 className="font-bold pt-3">Orders</h1>
-            <br />
-            <section className="flex flex-row justify-center min-w-full flex-wrap gap-5">
+    return <main className="">
+            <h1 className="font-bold pt-3 pl-3">Orders</h1>
+            <section className="">
                 {
                     paginatedList.items.map(m => (
                         <>
@@ -21,7 +20,9 @@ export default async function MenuPage({ searchParams }
                     ))
                 }
             </section>
-            <Pagination {...paginatedList} />
+            <div className="flex justify-center">
+                <Pagination {...paginatedList} />
+            </div>
         </main>;
     
 }

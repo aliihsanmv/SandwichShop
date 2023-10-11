@@ -14,7 +14,7 @@ export default function Pagination(paginatedList : IPaginatedList<IPaginatable>)
 
     const pagesArray = [...Array(paginatedList.totalPages)]
 
-    return    <div className="join mt-3">
+    return    <div className="join my-3">
         {
             pagesArray.map((e, i) => 
                     <Link className={ page == (i + 1).toString() ? "join-item btn btn-active" : "join-item btn "} href={`?page=${i+1}`}>{i+1}</Link>

@@ -5,7 +5,7 @@ import { IOrder } from "@/app/helpers/order-repository";
 export default function OrderItem({id, deliveryAddress, deliveryMode, orderItems} : IOrder)
 {
     return (
-        <div className="card card-compact bg-base-100 shadow-xl mx-4">
+        <div className="card card-compact bg-base-100 shadow-xl mx-4 my-4">
         <div className="card-body">
             <h3 className="card-title">Order</h3>
             {deliveryAddress?.streetAddress && 
