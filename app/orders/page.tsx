@@ -1,5 +1,5 @@
 import { orderRepo } from "../helpers/order-repository";
-import Pagination from "../menu/components/pagination";
+import Pagination from "../components/pagination";
 import Order from "./components/order";
 
 export default async function MenuPage({ searchParams }

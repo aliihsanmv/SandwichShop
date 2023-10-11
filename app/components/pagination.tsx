@@ -8,16 +8,12 @@ export default function Pagination(paginatedList : IPaginatedList<IPaginatable>)
 
     const pagesArray = [...Array(paginatedList.totalPages)]
 
-    return <div>
+    return    <div className="join">
         {
             pagesArray.map((e, i) => 
-                <Link href={`?page=${i+1}`}>{i+1}</Link>
-                // <button onClick={ () => {
-                //         router.push(`/?page=${i}`)
-                //     }
-                // }>{ i + 1}</button>
-            )
+                    <Link className="join-item btn" href={`?page=${i+1}`}>{i+1}</Link>
+                )
         }
-        {/* {paginatedList.totalPages} */}
     </div>
+    
 }

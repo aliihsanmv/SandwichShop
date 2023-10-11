@@ -81,22 +81,6 @@ export interface OrderDto {
 async function create(orderDto: OrderDto) 
 {
 
-//     id Int @id @default(autoincrement())
-//   orderItems OrderItem[]
-//   deliveryMode Int
-//   deliveryAddress Json?
-//   createdAt DateTime
-//   updatedAt DateTime
-
-
-// id Int @id @default(autoincrement())
-// order Order @relation(fields: [orderId], references: [id])
-// orderId Int
-// menuItem MenuItem? @relation(fields: [menuItemId], references: [id])
-// menuItemId Int?
-// price Decimal
-// quantity Int
-
     let addr = undefined;
 
     if(orderDto.deliveryAddress) {

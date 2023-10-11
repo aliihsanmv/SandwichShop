@@ -3,7 +3,7 @@
 import MenuItem from "./components/menu-item";
 import { MenuItemForm } from "./components/menu-item-form";
 import { IMenuItem, menuRepo } from "../helpers/menu-repository";
-import Pagination from "./components/pagination";
+import Pagination from "../components/pagination";
 import { cartRepo } from "../helpers/cart-repository";
 import { orderRepo } from "../helpers/order-repository";
 
@@ -29,10 +29,6 @@ export default async function MenuPage({ searchParams }
 
 
     return <main className="flex min-h-screen flex-col items-center justify-top p-24 bg-slate-300">
-            <h1>Menu</h1>
-            <p>cart item length {cartCount}</p>
-            <p>{orders.items.length}</p>
-            <p>{ menuitems.length }</p>
             <br />
             {/* <MenuItemForm /> */}
             <br />
