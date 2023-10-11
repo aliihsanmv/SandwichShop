@@ -5,7 +5,7 @@ import { IOrder } from "@/app/helpers/order-repository";
 export default function OrderItem({id, deliveryAddress, deliveryMode, orderItems} : IOrder)
 {
     return (
-        <div className="card card-compact w-full bg-base-100 shadow-xl mx-4">
+        <div className="card card-compact bg-base-100 shadow-xl mx-4">
         <div className="card-body">
             <h3 className="card-title">Order</h3>
             {deliveryAddress?.streetAddress && 
@@ -79,20 +79,5 @@ export default function OrderItem({id, deliveryAddress, deliveryMode, orderItems
             </div>
         </div>
         </div>
-
-        // <div className="w-max bg-slate-300 border-solid">
-        //     <p>
-        //         Order
-        //     </p>
-        //     <p>
-        //         {deliveryAddress?.apartment}, {deliveryAddress?.island}, {deliveryAddress?.streetAddress}
-        //     </p>
-        //     <p>
-        //         {orderItems.map(x => (<span>
-        //             {Number(x.price)}
-        //         </span>))
-        //         }
-        //     </p>
-        // </div>
       )
 }
