@@ -1,5 +1,6 @@
 import { orderRepo } from "../helpers/order-repository";
 import Pagination from "../menu/components/pagination";
+import Order from "./components/order";
 
 export default async function MenuPage({ searchParams }
     : { searchParams: { [key: string]: string | string[] | undefined }}) {
@@ -17,9 +18,9 @@ export default async function MenuPage({ searchParams }
             <section className="flex flex-row justify-center min-w-full flex-wrap gap-5">
                 {
                     paginatedList.items.map(m => (
-                        <p>
-                        {JSON.stringify(m.deliveryAddress)}, {m.deliveryMode}, {m.id}
-                        </p>
+                        <>
+                            <Order {...m} />
+                        </>
                     ))
                 }
             </section>

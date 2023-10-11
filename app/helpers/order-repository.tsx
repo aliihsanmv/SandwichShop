@@ -4,6 +4,27 @@ import { IPaginatedList } from "./menu-repository";
 const prisma = new PrismaClient({
 });
 
+export interface IOrder {
+    id:number,
+    deliveryAddress: any,
+    deliveryMode: number,
+    orderItems: ({
+        menuItem: {
+            id: number;
+            name: string;
+            description: string;
+            price: Prisma.Decimal;
+            photoUrl: string;
+        } | null;
+    } & {
+        id: number;
+        orderId: number;
+        menuItemId: number | null;
+        price: Prisma.Decimal;
+        quantity: number;
+    })[];
+    
+}
 
 export const orderRepo = {
     getByPage: async (page: number = 1, itemsPerPage : number = 5) => {
@@ -19,10 +40,12 @@ export const orderRepo = {
             }
         });
 
+        items[0]
+
         const totalItems = await prisma.order.count();
         const totalPages = Math.floor(totalItems / itemsPerPage) + (totalItems % itemsPerPage > 0 ? 1 : 0)
 
-        var res : IPaginatedList<Order> = {
+        var res : IPaginatedList<IOrder> = {
             page,
             itemsPerPage,
             totalItems,
