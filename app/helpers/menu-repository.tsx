@@ -11,14 +11,17 @@ export interface IMenuItem {
     photoUrl: string;
 }
 
-export interface IPaginatedList<T> {
+export interface IPaginatedList<IPaginatable> {
     page: number,
     itemsPerPage: number,
     totalItems: number,
     totalPages: number
-    items: T[]
+    items: IPaginatable[]
 }
 
+export default interface IPaginatable {
+
+}
 
 
 export const menuRepo = {

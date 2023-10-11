@@ -1,5 +1,5 @@
 import { Cart, CartItem, PrismaClient } from "@prisma/client";
-import { OrderDto, OrderItemDto, orderRepo } from "./order-repository";
+import { OrderAddressDto, OrderDto, OrderItemDto, orderRepo } from "./order-repository";
 
 const prisma = new PrismaClient({
     // log: ['query', 'info', 'warn', 'error'],
@@ -104,7 +104,7 @@ async function addItem(cartId: number, itemId: number, quantity: number)
 
 
 
-async function checkout(cartId: number) 
+async function checkout(cartId: number, orderAddress: OrderAddressDto) 
 {
     var cart = await cartRepo.getById(cartId);
 
@@ -117,7 +117,7 @@ async function checkout(cartId: number)
         let orderDto : OrderDto = {
             items: [],
             deliveryMode: 1,
-            deliveryAddress: undefined,
+            deliveryAddress: orderAddress,
         }
 
         let orderItemDto: OrderItemDto[] = [];

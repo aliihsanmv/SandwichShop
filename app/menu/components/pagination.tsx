@@ -1,9 +1,10 @@
 "use client"
-import { IPaginatedList } from "@/app/helpers/menu-repository";
+import IPaginatable, { IPaginatedList } from "@/app/helpers/menu-repository";
 import { MenuItem } from "@prisma/client";
 import Link from 'next/link'
 
-export default function Pagination(paginatedList : IPaginatedList<MenuItem>) {
+
+export default function Pagination(paginatedList : IPaginatedList<IPaginatable>) {
 
     const pagesArray = [...Array(paginatedList.totalPages)]
 
