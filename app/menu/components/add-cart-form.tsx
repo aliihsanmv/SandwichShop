@@ -17,7 +17,7 @@ export function SubmitButton() {
     const { pending } = useFormStatus();
 
     return (
-        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">Add</button>
+        <button className="btn btn-primary">Add</button>
     )
 }
 

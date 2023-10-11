@@ -27,7 +27,7 @@ export default async function MenuPage({ searchParams }
     const orders = await orderRepo.getByPage();
 
 
-    return <main className="flex min-h-screen flex-col items-center justify-top p-24 bg-slate-300">
+    return <main className="flex flex-col items-center justify-top px-14">
             <br />
             {/* <MenuItemForm /> */}
             <br />
