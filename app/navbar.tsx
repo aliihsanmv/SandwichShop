@@ -1,7 +1,10 @@
 import Link from 'next/link'
 import React from 'react'
 
+
+
 export default function Navbar () {
+
   return (
     <div className="navbar bg-base-100">
         <div className="flex-1">
