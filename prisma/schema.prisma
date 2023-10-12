@@ -1,6 +1,6 @@
 datasource db {
     provider = "mysql"
-    url = "mysql://admin:1234@localhost:3306/sandwitch"
+    url = env("DB_CONNECTION")
 }
 
 generator client {
