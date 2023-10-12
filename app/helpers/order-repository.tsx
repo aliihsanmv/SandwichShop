@@ -36,6 +36,9 @@ export const orderRepo = {
                         menuItem : true
                     }
                 }
+            },
+            orderBy: {
+                createdAt: "desc"
             }
         });
 

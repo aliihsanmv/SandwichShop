@@ -56,7 +56,7 @@ export async function checkout(prevState: any, formData: FormData) {
 
     if(!checkoutResult.isSuccess) 
     {
-        return ({ errorMessage: "An error occured trying to complete the checkout. Sorry for the inconvenience.", errors: [] })
+        return ({ errorMessage: checkoutResult.errorMessage, errors: [] })
     }
 
     revalidatePath('/');
