@@ -12,7 +12,8 @@
     "@prisma/client": "^5.4.0",
     "next": "canary",
     "react": "experimental",
-    "react-dom": "experimental"
+    "react-dom": "experimental",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/node": "latest",

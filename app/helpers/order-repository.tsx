@@ -61,7 +61,7 @@ export const orderRepo = {
 export interface OrderAddressDto {
     streetAddress: string
     apartment: string
-    island: string
+    city: string
 }
 
 export interface OrderItemDto 

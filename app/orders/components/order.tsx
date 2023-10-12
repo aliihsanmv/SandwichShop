@@ -11,7 +11,7 @@ export default function OrderItem({id, deliveryAddress, deliveryMode, orderItems
             {deliveryAddress?.streetAddress && 
                 <p>Delivery Address: {deliveryAddress?.streetAddress}, {deliveryAddress?.apartment}, {deliveryAddress?.island}</p>
             }
-            <p>Type: {deliveryMode == 2 ? "Pickup" : "Delivery"}</p>
+            <p>Type: {deliveryMode == 2 ? "Delivery" : "Pickup"}</p>
             <div className="card-actions justify-center">
                 
                 <div className="overflow-x-auto">

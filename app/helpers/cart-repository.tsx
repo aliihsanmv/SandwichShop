@@ -99,21 +99,29 @@ async function addItem(cartId: number, itemId: number, quantity: number)
 
 }
 
+interface ICheckoutResult {
+    isSuccess: boolean,
+    errorMessage: string
+}
 
 
-async function checkout(cartId: number, orderAddress: OrderAddressDto) 
+async function checkout(cartId: number, deliveryMode: number, orderAddress: OrderAddressDto) : Promise<ICheckoutResult>
 {
     var cart = await cartRepo.getById(cartId);
 
     if(cart == null) {
-        return;
+        return { isSuccess: false, errorMessage: "Cart not fouund"};
+    }
+
+    if(cart.cartItems.length == 0) {
+        return { isSuccess: false, errorMessage: "There are no items in the cart"}; 
     }
 
     try {
 
         let orderDto : OrderDto = {
             items: [],
-            deliveryMode: 1,
+            deliveryMode: deliveryMode,
             deliveryAddress: orderAddress,
         }
 
@@ -138,7 +146,10 @@ async function checkout(cartId: number, orderAddress: OrderAddressDto)
 
     } catch (ex) {
         console.log(ex);
+        return { isSuccess: false, errorMessage: "Error saving changes"};
     }
+
+    return { isSuccess: true, errorMessage: ""};
 }
 
 function update(id: number, params: IMenuItem) {
