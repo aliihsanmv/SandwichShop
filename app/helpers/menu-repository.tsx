@@ -1,7 +1,5 @@
+import prisma from '@/prisma/db';
 import { MenuItem, PrismaClient } from '@prisma/client';
-
-const prisma = new PrismaClient();
-
 
 export interface IMenuItem {
     id?: number;

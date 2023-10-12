@@ -1,9 +1,6 @@
 import { Cart, CartItem, PrismaClient } from "@prisma/client";
 import { OrderAddressDto, OrderDto, OrderItemDto, orderRepo } from "./order-repository";
-
-const prisma = new PrismaClient({
-    // log: ['query', 'info', 'warn', 'error'],
-});
+import prisma from "@/prisma/db";
 
 
 export interface IMenuItem {

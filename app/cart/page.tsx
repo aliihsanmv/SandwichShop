@@ -29,6 +29,7 @@ export default async function MenuPage({ searchParams }
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -59,6 +60,7 @@ export default async function MenuPage({ searchParams }
                                 <th>
                                  {(Number(i.price) * i.quantity).toFixed(2)}
                                 </th>
+                                <td><RemoveFromCartForm cartItemId={i.id}></RemoveFromCartForm></td>
                             </tr>
                         ))
                     }

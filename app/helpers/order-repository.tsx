@@ -1,8 +1,7 @@
 import { Order, OrderItem, Prisma, PrismaClient } from "@prisma/client";
 import { IPaginatedList } from "./menu-repository";
+import prisma from "@/prisma/db";
 
-const prisma = new PrismaClient({
-});
 
 export interface IOrder {
     id:number,
