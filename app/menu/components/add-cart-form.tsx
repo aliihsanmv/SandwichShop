@@ -17,7 +17,7 @@ export function SubmitButton() {
     const { pending } = useFormStatus();
 
     return (
-        <button className="btn btn-primary">Add</button>
+        <button className="btn btn-primary btn-sm">Add</button>
     )
 }
 
