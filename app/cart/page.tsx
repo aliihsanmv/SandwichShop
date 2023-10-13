@@ -36,8 +36,8 @@ export default async function MenuPage({ searchParams }
                     
                     {
                         cartItems?.map(i => (
-                            <tr>
-                                <td key={i.id}>
+                            <tr key={i.id}>
+                                <td>
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                     <div className="mask mask-squircle w-12 h-12">
@@ -68,7 +68,18 @@ export default async function MenuPage({ searchParams }
                     
                     </tbody>
                     {/* foot */}
-
+                    <tfoot>
+                    <tr>
+                  
+                        <th colSpan={4} className="text-right text-xl text-gray-900">
+                            {
+                                (cartItems?.reduce((a, i) => {
+                                    return (Number(i.price) * i.quantity) + a;
+                                }, 0) ?? 0).toFixed(2)
+                            }
+                        </th>
+                    </tr>
+                    </tfoot>
                     
                 </table>
                 </div>
@@ -81,6 +92,5 @@ export default async function MenuPage({ searchParams }
     
         </>
         );
-
     
 }
