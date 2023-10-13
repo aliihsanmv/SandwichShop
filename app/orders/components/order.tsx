@@ -29,7 +29,7 @@ export default function OrderItem({id, deliveryAddress, deliveryMode, orderItems
                     
                     {
                         orderItems.map(i => (
-                            <tr>
+                            <tr key={i.id}>
                                 <td>
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">

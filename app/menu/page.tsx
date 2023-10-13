@@ -33,7 +33,7 @@ export default async function MenuPage({ searchParams }
             <br />
             <section className="flex flex-row justify-center min-w-full flex-wrap gap-5">
                 {
-                    menuitems.map(m => (<MenuItem {...m}/>))
+                    menuitems.map(m => (<MenuItem key={m.id} {...m}/>))
                 }
             </section>
             <Pagination {...paginatedList} />

@@ -15,7 +15,7 @@ export default async function MenuPage({ searchParams }
                 {
                     paginatedList.items.map(m => (
                         <>
-                            <Order {...m} />
+                            <Order key={m.id} {...m} />
                         </>
                     ))
                 }
