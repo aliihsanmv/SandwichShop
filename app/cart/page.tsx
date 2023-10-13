@@ -4,8 +4,11 @@ import { cartRepo } from "../helpers/cart-repository";
 import { CheckoutForm } from "./components/checkout-form";
 import { RemoveFromCartForm } from "./components/remove-from-cart-form";
 
-export default async function MenuPage({ searchParams }
+export const dynamic = 'force-dynamic'
+
+export default async function CartPage({ searchParams }
     : { searchParams: { [key: string]: string | string[] | undefined }}) {
+
 
 
     const cart = await cartRepo.getById(1);
