@@ -15,7 +15,7 @@ export default function MenuItem({id, name, price, description, photoUrl} : IMen
         <Rating />
       </div>
       <h2 className="card-title">
-        {name}
+        {name} <small>{price.toFixed(2)}</small>
       </h2>
       <p>{description}</p>
       <p>
