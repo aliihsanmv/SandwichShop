@@ -3,7 +3,7 @@ import { IMenuItem } from "@/app/helpers/menu-repository";
 import { AddCartForm } from "./add-cart-form";
 import Image from 'next/image';
 
-export default function MenuItem({id, name, price, description, photoUrl} : IMenuItem) {
+export default function MenuItem({id, name, price, rating, description, photoUrl, ingredients} : IMenuItem) {
 
     return <div className="card card-compact w-full sm:w-full md:w-52 bg-base-100 shadow-xl">
     <figure><Image src={photoUrl} width={500} height={500} alt="Shoes" className="h-44 object-cover w-full"/></figure>
@@ -12,7 +12,7 @@ export default function MenuItem({id, name, price, description, photoUrl} : IMen
         <AddCartForm itemId={id ?? 0} />
       </div>
       <div>
-        <Rating />
+        <Rating ratingValue={rating} />
       </div>
       <h2 className="card-title">
         {name} <small>{price.toFixed(2)}</small>
@@ -21,13 +21,12 @@ export default function MenuItem({id, name, price, description, photoUrl} : IMen
       <p>
         Ingredients
       </p>
-
-
-
         <ul className="list-disc ml-5">
-            <li>Bread</li>
-            <li>Cheese</li>
-            <li>Tomato</li>
+          {
+            ingredients &&
+              ingredients.map(x => <li key={ id + x }>{x}</li>)
+          }
+
         </ul>
     </div>
   </div>
