@@ -7,7 +7,7 @@ export default async function Navbar () {
   const cart = await cartRepo.getById(1);
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar sticky bg-base-100 top-0 z-50">
         <div className="flex-1">
             <Link className="btn btn-ghost normal-case text-xl" href='/menu'>Sandwich Shop</Link>
         </div>
