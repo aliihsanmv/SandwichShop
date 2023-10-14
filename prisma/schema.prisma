@@ -15,6 +15,8 @@ model MenuItem {
     photoUrl String
     cartItems CartItem[]
     orderItems OrderItem[]
+    rating Decimal
+    ingredients Json
 
     @@map("menuitem")
 }
@@ -35,6 +37,7 @@ model CartItem {
   menuItemId Int
   quantity Int
   price Decimal
+  sessionId String
 
   @@map("cartitem")
 }
@@ -46,6 +49,7 @@ model Order {
   deliveryAddress Json?
   createdAt DateTime
   updatedAt DateTime
+  sessionId String
 
   @@map("order")
 }
