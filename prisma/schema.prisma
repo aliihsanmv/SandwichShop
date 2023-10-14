@@ -25,6 +25,7 @@ model Cart {
   id Int @id @default(autoincrement())
   cartItems CartItem[]
   createdAt DateTime
+  sessionId String
 
   @@map("cart")
 }
@@ -37,7 +38,6 @@ model CartItem {
   menuItemId Int
   quantity Int
   price Decimal
-  sessionId String
 
   @@map("cartitem")
 }
