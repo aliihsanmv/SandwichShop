@@ -3,10 +3,13 @@
 import { cartRepo } from "@/app/helpers/cart-repository";
 import { OrderAddressDto } from "@/app/helpers/order-repository";
 import { revalidatePath } from "next/cache"
+import { cookies } from "next/headers";
 import { z } from "zod";
 
 
 export async function checkout(prevState: any, formData: FormData) {
+
+    let sessionId = cookies().get("sessionId")?.value ?? "";
 
     const deliveryModeSchema = z.object({
         deliveryMode: z.number().max(2).min(1)
@@ -52,7 +55,7 @@ export async function checkout(prevState: any, formData: FormData) {
     
     }
 
-    var checkoutResult = await cartRepo.checkout(Number(cartId), deliveryMode, address);
+    var checkoutResult = await cartRepo.checkout(sessionId, deliveryMode, address);
 
     if(!checkoutResult.isSuccess) 
     {

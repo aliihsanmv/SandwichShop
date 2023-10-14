@@ -1,10 +1,12 @@
 import Link from 'next/link'
 import React from 'react'
 import { cartRepo } from './helpers/cart-repository'
+import { cookies } from 'next/headers'
 
 export default async function Navbar () {
 
-  const cart = await cartRepo.getById(1);
+  const id = cookies().get("sessionId")?.value ?? "";
+  const cart = await cartRepo.getById(id);
 
   return (
     <div className="navbar sticky bg-base-100 top-0 z-50">

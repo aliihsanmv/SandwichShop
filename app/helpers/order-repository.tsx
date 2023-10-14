@@ -26,7 +26,7 @@ export interface IOrder {
 }
 
 export const orderRepo = {
-    getByPage: async (page: number = 1, itemsPerPage : number = 5) => {
+    getByPage: async (sessionId: string, page: number = 1, itemsPerPage : number = 5) => {
         const items = await prisma.order.findMany({
             skip: (page - 1) * itemsPerPage,
             take: itemsPerPage,
@@ -36,6 +36,9 @@ export const orderRepo = {
                         menuItem : true
                     }
                 }
+            },
+            where: {
+                sessionId: sessionId
             },
             orderBy: {
                 createdAt: "desc"

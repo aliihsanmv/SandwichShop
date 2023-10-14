@@ -21,7 +21,7 @@ export interface IPaginatedList<T> {
 
 
 export const cartRepo = {
-    getById: async (id: number) => await prisma.cart.findFirst({where: {id: id}, 
+    getById: async (sessionId: string) => await prisma.cart.findFirst({where: {sessionId: sessionId}, 
         include: {
             cartItems: {
                 include: {
@@ -36,19 +36,21 @@ export const cartRepo = {
     delete: _delete
 };
 
-async function addItem(cartId: number, itemId: number, quantity: number) 
+async function addItem(sessionId: string, itemId: number, quantity: number) 
 {
-    // const cart = await cartRepo.getById(cartId);
     var cart = await prisma.cart.findFirst({
         include: {
             cartItems: {
             }
+        },
+        where: {
+            sessionId: sessionId
         }
     });
 
     if (!cart) 
     {
-        cart = await prisma.cart.create({ data: {id: 0, createdAt: new Date()}, include: {
+        cart = await prisma.cart.create({ data: {id: 0, createdAt: new Date(), sessionId: sessionId}, include: {
                 cartItems: 
                 {
                 }
@@ -105,9 +107,9 @@ interface ICheckoutResult {
 }
 
 
-async function checkout(cartId: number, deliveryMode: number, orderAddress: OrderAddressDto) : Promise<ICheckoutResult>
+async function checkout(sessionId: string, deliveryMode: number, orderAddress: OrderAddressDto) : Promise<ICheckoutResult>
 {
-    var cart = await cartRepo.getById(cartId);
+    var cart = await cartRepo.getById(sessionId);
 
     if(cart == null) {
         return { isSuccess: false, errorMessage: "Cart not fouund"};

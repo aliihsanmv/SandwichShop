@@ -1,8 +1,10 @@
 
 
+import { cookies } from "next/headers";
 import { cartRepo } from "../helpers/cart-repository";
 import { CheckoutForm } from "./components/checkout-form";
 import { RemoveFromCartForm } from "./components/remove-from-cart-form";
+
 
 export const dynamic = 'force-dynamic'
 
@@ -10,8 +12,8 @@ export default async function CartPage({ searchParams }
     : { searchParams: { [key: string]: string | string[] | undefined }}) {
 
 
-
-    const cart = await cartRepo.getById(1);
+    const id = cookies().get("sessionId")?.value ?? "";
+    const cart = await cartRepo.getById(id);
     const cartItems = cart?.cartItems;
 
 
