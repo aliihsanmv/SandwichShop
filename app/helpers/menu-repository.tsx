@@ -7,6 +7,8 @@ export interface IMenuItem {
     description: string;
     price: number;
     photoUrl: string;
+    rating: number;
+    ingredients: string[]
 }
 
 export interface IPaginatedList<IPaginatable> {

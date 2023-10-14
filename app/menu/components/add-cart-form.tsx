@@ -33,9 +33,9 @@ export function AddCartForm({itemId}: addToCartProps) {
         {
             setShowAdded(true);
 
-            var timeOut = window.setTimeout(() => {
-                setShowAdded(false);
-                }, 600);
+            window.setTimeout(() => {
+              setShowAdded(false);
+            }, 600);
             
         }
     }, [state])

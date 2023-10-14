@@ -4,6 +4,7 @@ import MenuItem from "./components/menu-item";
 import { IMenuItem, menuRepo } from "../helpers/menu-repository";
 import Pagination from "../components/pagination";
 import { orderRepo } from "../helpers/order-repository";
+import { MenuItemForm } from "./components/menu-item-form";
 
 export default async function MenuPage({ searchParams }
     : { searchParams: { [key: string]: string | string[] | undefined }}) {
@@ -23,7 +24,7 @@ export default async function MenuPage({ searchParams }
 
     return <main className="flex flex-col items-center justify-top px-14">
             <br />
-            {/* <MenuItemForm /> */}
+            <MenuItemForm />
             <br />
             <section className="flex flex-row justify-center min-w-full flex-wrap gap-5">
                 {

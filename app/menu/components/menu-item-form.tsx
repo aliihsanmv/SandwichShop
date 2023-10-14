@@ -29,6 +29,15 @@ export function MenuItemForm() {
             <br />
             <label htmlFor="description">Description</label>
             <input type="text" id="description" name="description" required />
+            <br />
+            <label htmlFor="ingredients">Ingredients(comma seperated)</label>
+            <input type="text" id="ingredients" name="ingredients" required />
+            <br />
+            <label htmlFor="photoUrl">PhotoUrl</label>
+            <input type="text" id="photoUrl" name="photoUrl" required />
+            <br />
+            <label htmlFor="price">Price</label>
+            <input type="number" id="price" name="price" required />
             <SubmitButton />
         </form>
     )
