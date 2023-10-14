@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function MenuItem({id, name, price, description, photoUrl} : IMenuItem) {
 
-    return <div className="card card-compact w-52 bg-base-100 shadow-xl">
+    return <div className="card card-compact w-full sm:w-full md:w-52 bg-base-100 shadow-xl">
     <figure><Image src={photoUrl} width={500} height={500} alt="Shoes" className="h-44 object-cover w-full"/></figure>
     <div className="card-body">
       <div className="card-actions justify-end">
