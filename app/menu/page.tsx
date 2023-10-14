@@ -17,7 +17,9 @@ export default async function MenuPage({ searchParams }
     const menuitems: IMenuItem[] = paginatedList.items.map<IMenuItem>(x => {
         return {
             ...x,
-            price: Number.parseFloat(x.price.toString())
+            rating: Number.parseFloat(x.rating.toString()),
+            price: Number.parseFloat(x.price.toString()),
+            ingredients: JSON.parse(x.ingredients?.toString() ?? "")
         }
     });
 
