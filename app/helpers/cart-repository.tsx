@@ -50,7 +50,15 @@ async function addItem(sessionId: string, itemId: number, quantity: number)
 
     if (!cart) 
     {
-        cart = await prisma.cart.create({ data: {id: 0, createdAt: new Date(), sessionId: sessionId}, include: {
+        cart = await prisma.cart.create({ 
+            data: 
+            {
+                id: undefined, 
+                createdAt: 
+                new Date(), 
+                sessionId: sessionId
+            }, 
+            include: {
                 cartItems: 
                 {
                 }
@@ -125,6 +133,7 @@ async function checkout(sessionId: string, deliveryMode: number, orderAddress: O
             items: [],
             deliveryMode: deliveryMode,
             deliveryAddress: orderAddress,
+            sessionId: sessionId
         }
 
         let orderItemDto: OrderItemDto[] = [];
@@ -144,7 +153,8 @@ async function checkout(sessionId: string, deliveryMode: number, orderAddress: O
         orderDto.items = orderItemDto;
         
         var orderDtoRes = await orderRepo.create(orderDto);
-        var res = await prisma.cart.update({where: {id: cartId}, data: { createdAt: new Date() }})
+    
+        var res = await prisma.cart.update({where: {id: cart.id}, data: { createdAt: new Date() }})
 
     } catch (ex) {
         console.log(ex);

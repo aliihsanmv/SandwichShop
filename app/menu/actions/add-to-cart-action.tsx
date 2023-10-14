@@ -16,7 +16,7 @@ export async function addToCart(prevState: any, formData: FormData) {
         cookies().set("sessionId", id);
     }
 
-    cartRepo.addItem(1, Number(itemId), 1);
+    cartRepo.addItem(id, Number(itemId), 1);
     revalidatePath('/');
     return ({ message: "Added menu item", isSuccess: true });
 }

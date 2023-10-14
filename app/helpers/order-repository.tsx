@@ -81,6 +81,7 @@ export interface OrderDto {
     items: OrderItemDto[]
     deliveryMode: number,
     deliveryAddress: OrderAddressDto | undefined
+    sessionId: string
 }
 
 async function create(orderDto: OrderDto) 
@@ -98,6 +99,7 @@ async function create(orderDto: OrderDto)
         updatedAt: new Date(),
         deliveryMode: orderDto.deliveryMode,
         deliveryAddress: addr,
+        sessionId: orderDto.sessionId
     }
 
     var res = await prisma.order.create({ data: order })

@@ -24,7 +24,7 @@ export default async function MenuPage({ searchParams }
 
     return <main className="flex flex-col items-center justify-top px-14">
             <br />
-            <MenuItemForm />
+            {/* <MenuItemForm /> */}
             <br />
             <section className="flex flex-row justify-center min-w-full flex-wrap gap-5">
                 {
