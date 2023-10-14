@@ -38,7 +38,7 @@ export default function OrderItem({id, deliveryAddress, deliveryMode, orderItems
                                     </div>
                                     <div>
                                     <div className="font-bold text-xs">{i.menuItem?.name}</div>
-                                    <div className="text-sm opacity-50">{i.menuItem?.description}</div>
+                                    <div className="text-sm opacity-50">{i.menuItem?.description.substring(1, 10)}...</div>
                                     <div className="font-bold">{i.price.toFixed(2)}</div>
                                     
                                     </div>

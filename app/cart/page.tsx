@@ -51,7 +51,7 @@ export default async function CartPage({ searchParams }
                                     </div>
                                     <div>
                                     <div className="font-bold">{i.menuItem?.name}</div>
-                                    <div className="text-sm opacity-50">{i.menuItem?.description}</div>
+                                    <div className="text-sm opacity-50">{i.menuItem?.description.substring(1, 10)}...</div>
                                     </div>
                                 </div>
                                 </td>
