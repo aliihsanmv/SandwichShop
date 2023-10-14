@@ -8,5 +8,5 @@ export async function addToCart(prevState: any, formData: FormData) {
     const itemId = formData.get('itemId') as string;
     cartRepo.addItem(1, Number(itemId), 1);
     revalidatePath('/');
-    return ({ message: "Added menu item" });
+    return ({ message: "Added menu item", isSuccess: true });
 }

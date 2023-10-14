@@ -21,6 +21,9 @@ export default function MenuItem({id, name, price, description, photoUrl} : IMen
       <p>
         Ingredients
       </p>
+
+
+
         <ul className="list-disc ml-5">
             <li>Bread</li>
             <li>Cheese</li>
