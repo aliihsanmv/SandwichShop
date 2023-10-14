@@ -35,7 +35,7 @@ export function AddCartForm({itemId}: addToCartProps) {
 
             var timeOut = window.setTimeout(() => {
                 setShowAdded(false);
-                }, 700);
+                }, 600);
             
         }
     }, [state])
@@ -47,19 +47,21 @@ export function AddCartForm({itemId}: addToCartProps) {
 
             {
                 showAdded && 
-                <div>
-                    <motion.div
-                    initial={{ scale: 0, y: 20 }}
-                    animate={{ rotate: 0, scale: 1, y: 0 }}
-                    transition={{
-                    type: "spring",
-                    stiffness: 260,
-                    damping: 20
-                }}
-                    className="flex justify-center font-bold text-green-600"
-                >
-                    +1
-                </motion.div>
+                <div className="relative">
+                    <div className="absolute ml-4" style={{top: "-25px"}}>
+                        <motion.div
+                        initial={{ scale: 0, y: 20 }}
+                        animate={{ rotate: 0, scale: 1, y: 0 }}
+                        transition={{
+                        type: "spring",
+                        stiffness: 260,
+                        damping: 20
+                    }}
+                        className="flex justify-center font-bold text-green-600"
+                    >
+                        +1
+                    </motion.div>
+                    </div>
                 </div>
                 
                 
