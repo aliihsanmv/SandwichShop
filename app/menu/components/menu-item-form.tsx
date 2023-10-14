@@ -38,6 +38,9 @@ export function MenuItemForm() {
             <br />
             <label htmlFor="price">Price</label>
             <input type="number" id="price" name="price" required />
+            <br />
+            <label htmlFor="price">Rating</label>
+            <input type="number" id="rating" name="rating" required />
             <SubmitButton />
         </form>
     )
